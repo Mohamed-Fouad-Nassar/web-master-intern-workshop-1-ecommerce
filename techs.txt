@@ -1,0 +1,4 @@
+- typescript
+- react query ==> for data fetching and caching.
+- tailwind
+- 
