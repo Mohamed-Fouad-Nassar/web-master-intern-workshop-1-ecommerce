@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <>
       <Header />
-      <main className="min-h-[calc(100vh-60px)] container mx-auto px-4">
+      <main className="min-h-[calc(100vh-60px)]">
         <Outlet />
       </main>
       <Footer />
