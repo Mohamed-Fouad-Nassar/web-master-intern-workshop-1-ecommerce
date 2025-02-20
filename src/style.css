@@ -9,4 +9,8 @@
   --font-ibm: "IBM Plex Sans", serif;
   --font-hind: "Hind Vadodara", serif;
   --font-cabin-con: "Cabin Condensed", serif;
+
+  --color-primary: #ffd814;
+  --color-secondary: #de7921;
+  --color-third: #1f8394;
 }
