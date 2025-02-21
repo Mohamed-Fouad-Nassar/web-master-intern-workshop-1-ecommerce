@@ -7,5 +7,15 @@ export default function SuspenseFallback({
 }: {
   children: React.ReactNode;
 }) {
-  return <Suspense fallback={<Spinner />}>{children}</Suspense>;
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center items-center min-h-screen">
+          <Spinner />
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
 }
