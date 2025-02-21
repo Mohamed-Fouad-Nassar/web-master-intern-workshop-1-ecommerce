@@ -11,7 +11,7 @@
 
 // Single Product Page
   for hole page ==> IBM Plex Sans  //   font-family: "IBM Plex Sans", serif;
-  for brand ==> Inika
+  for brand ==> Inika  //  font-family: "Inika", serif;
   for comment =>
     Hind Vadodara (the title of comment, and the word 'Report')  //  font-family: "Hind Vadodara", serif;
     other will be "Inter"  //  font-family: "Inter", serif;
