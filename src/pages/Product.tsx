@@ -11,6 +11,10 @@ import {
   TProductComment,
 } from "../types/product.types";
 
+import img1 from "../data/images/product-img-1.png";
+import img2 from "../data/images/product-img-2.png";
+import img3 from "../data/images/product-img-3.jpg";
+
 const comments: TProductComment[] = [
   {
     user: {
@@ -65,7 +69,7 @@ const product: TProduct = {
     count: 107,
     stars: { 5: 60, 4: 30, 3: 10, 2: 5, 1: 2 },
   },
-  images: [],
+  images: [img1, img2, img3],
 };
 const seller: TProductSeller = {
   name: "Monatik LLC",

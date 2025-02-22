@@ -28,7 +28,7 @@ export default function ProductSlider({
         <h2 className="text-xl font-medium text-gray-700">{title}</h2>
       </div>
 
-      <div className="mt-4 lg:mt-0 py-28 px-10 bg-gray-50 rounded text-center">
+      <div className="mt-4 lg:mt-0 rounded text-center">
         <ImagesSlider images={images} />
       </div>
     </section>
