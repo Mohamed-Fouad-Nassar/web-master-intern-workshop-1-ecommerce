@@ -71,7 +71,7 @@ function EmblaCarousel({ slides, options }: TEmblaCarouselProps) {
         <div className="flex">
           {slides.map((img, i) => (
             <div key={i} className="flex-none w-full px-2">
-              <div className="flex items-center justify-center aspect-video lg:aspect-square rounded text-4xl font-bold">
+              <div className="flex items-center justify-center aspect-video lg:aspect-square rounded">
                 <img src={img} alt={`product-slide-${i}`} />
               </div>
             </div>
@@ -103,8 +103,20 @@ function EmblaCarousel({ slides, options }: TEmblaCarouselProps) {
   );
 }
 
-export default function ImagesSlider({ images }: { images: string[] }) {
-  console.log(images);
+export default function ImagesSlider({
+  img,
+  images,
+}: {
+  img: string;
+  images: string[];
+}) {
+  // if no images, show the main image only
+  if (!images?.length)
+    return (
+      <div className="flex items-center justify-center aspect-video lg:aspect-square">
+        <img src={img} alt="product-image" />
+      </div>
+    );
 
   return <EmblaCarousel slides={images} />;
 }

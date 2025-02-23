@@ -2,6 +2,7 @@ import Stars from "../../components/Stars";
 import ImagesSlider from "../../components/ImagesSlider";
 
 type TProductSliderProps = {
+  img: string;
   title: string;
   brand: string;
   images: string[];
@@ -9,6 +10,7 @@ type TProductSliderProps = {
 };
 
 export default function ProductSlider({
+  img,
   title,
   brand,
   rating,
@@ -29,7 +31,7 @@ export default function ProductSlider({
       </div>
 
       <div className="mt-4 lg:mt-0 rounded text-center">
-        <ImagesSlider images={images} />
+        <ImagesSlider img={img} images={images} />
       </div>
     </section>
   );

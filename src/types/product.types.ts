@@ -16,10 +16,11 @@ export type TProductComment = {
 
 export type TProduct = {
   id: number;
+  img: string;
   title: string;
   brand: string;
-  description: string;
   price: number;
+  description: string;
   rating: {
     rate: number;
     count: number;

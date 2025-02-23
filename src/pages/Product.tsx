@@ -69,6 +69,7 @@ const product: TProduct = {
     count: 107,
     stars: { 5: 60, 4: 30, 3: 10, 2: 5, 1: 2 },
   },
+  img: img1,
   images: [img1, img2, img3],
 };
 const seller: TProductSeller = {
@@ -91,6 +92,7 @@ export default function Product() {
 
       <div className="flex gap-4 flex-col lg:flex-row items-start">
         <ProductSlider
+          img={product.img}
           title={product.title}
           brand={product.brand}
           images={product.images}
