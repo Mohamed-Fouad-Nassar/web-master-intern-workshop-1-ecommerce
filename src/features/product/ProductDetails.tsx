@@ -78,16 +78,14 @@ export default function ProductDetails({ product }: TProductDetailsProps) {
       </div>
 
       <hr className="border-gray-300 my-4" />
-      <div className="text-lg">
-        <h3 className="font-bold mb-2">About This Item</h3>
-        <ul className="list-disc pl-6">
-          {description?.split("\n").map((item, i) => (
-            <li key={i} className="font-light leading-5 mb-1.5">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h3 className="font-bold mb-2">About This Item</h3>
+      <ul className="list-disc pl-6">
+        {description?.split("\n").map((item, i) => (
+          <li key={i} className="font-light leading-5 mb-1.5">
+            {item}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

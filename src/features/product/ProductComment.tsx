@@ -1,7 +1,7 @@
-import { TProductComment } from "../../types/product.types";
+import { TFinalProductComment } from "../../types/product.types";
 
 type TProductCommentProps = {
-  comment: TProductComment;
+  comment: TFinalProductComment;
 };
 
 export default function ProductComment({

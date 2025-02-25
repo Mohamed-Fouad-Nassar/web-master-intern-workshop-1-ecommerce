@@ -17,8 +17,8 @@ export default function ProductSlider({
   images,
 }: TProductSliderProps) {
   return (
-    <section className="flex-1">
-      <div className="lg:hidden">
+    <section className="flex-1 w-full">
+      <div className="lg:hidden mb-10">
         <div className="flex gap-4 items-start justify-between mb-1.5">
           <span className="text-third font-inika uppercase">
             brand: {brand}
