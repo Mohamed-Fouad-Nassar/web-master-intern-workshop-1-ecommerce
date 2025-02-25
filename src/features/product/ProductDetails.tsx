@@ -1,6 +1,10 @@
 import ProductPrice from "./ProductPrice";
 import Stars from "../../components/Stars";
 
+import paymentIcon from "../../data/icons/payment-icon.png";
+import returnableIcon from "../../data/icons/returnable-icon.png";
+import secureIcon from "../../data/icons/secure-icon.png";
+
 import { TProduct } from "../../types/product.types";
 
 type TProductDetailsProps = {
@@ -47,31 +51,19 @@ export default function ProductDetails({ product }: TProductDetailsProps) {
 
         <div className="pt-2 flex items-center gap-4 text-third text-center">
           <div className="max-w-28 flex flex-col items-center gap-1">
-            <img
-              src="/src/data/icons/payment-icon.png"
-              alt="payment-icon"
-              className="w-10"
-            />
+            <img src={paymentIcon} alt="payment-icon" className="w-10" />
             <span className="text-pretty leading-5">
               Electronic payment Only
             </span>
           </div>
 
           <div className="max-w-28 flex flex-col items-center gap-1">
-            <img
-              src="/src/data/icons/returnable-icon.png"
-              alt="returnable-icon"
-              className="w-10"
-            />
+            <img src={returnableIcon} alt="returnable-icon" className="w-10" />
             <span className="text-pretty leading-5">30 days Returnable</span>
           </div>
 
           <div className="max-w-28 flex flex-col items-center gap-1">
-            <img
-              src="/src/data/icons/secure-icon.png"
-              alt="secure-icon"
-              className="w-10"
-            />
+            <img src={secureIcon} alt="secure-icon" className="w-10" />
             <span className="text-pretty leading-5">Secure transaction</span>
           </div>
         </div>
