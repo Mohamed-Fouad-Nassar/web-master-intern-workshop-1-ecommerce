@@ -53,15 +53,16 @@ function AppRouter() {
                 </SuspenseFallback>
               }
             />
-            <Route
-              path="cart"
-              element={
-                <SuspenseFallback>
-                  <Cart />
-                </SuspenseFallback>
-              }
-            />
           </Route>
+
+          <Route
+            path="cart"
+            element={
+              <SuspenseFallback>
+                <Cart />
+              </SuspenseFallback>
+            }
+          />
         </Route>
 
         {/* Auth Routes */}
