@@ -1,4 +1,6 @@
+import ProductItem from "../components/ProductItem";
 import Spinner from "../components/Spinner";
+import ProductsFilter from "../features/products/ProductsFilter";
 
 import useProducts from "../features/products/useProduct";
 
@@ -10,16 +12,19 @@ export default function Products() {
   if (!products?.length) return <div className="italic">No products found</div>;
 
   return (
-    <ul className="px-4 py-10 container mx-auto">
-      {products.map((product) => (
-        <li className="font-medium text-lg pb-4" key={product.id}>
-          {product.title}
-        </li>
-      ))}
-    </ul>
+    <section className="flex items-start font-inter px-2 pt-5 pb-12 gap-x-1.5 sm:px-3 sm:gap-x-2.5">
+      <ProductsFilter />
+
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 container">
+        {products.map((product) => (
+          <li
+            className="px-2.5 py-5 col-span-1 border border-[#D9D9D9]"
+            key={product.id}
+          >
+            <ProductItem product={product} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
-
-// export default function Products() {
-//   return <div>Products</div>;
-// }
