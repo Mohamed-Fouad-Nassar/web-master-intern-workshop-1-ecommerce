@@ -6,10 +6,15 @@ import Stars from "./Stars";
 const ProductItem = ({ product }: { product: TProduct }) => {
   return (
     <div>
-      <img src={product.img} alt={product.title} loading="lazy" />
+      <img
+        src={product?.img}
+        alt={product?.title}
+        className="mb-6 w-64 h-48 object-cover"
+        loading="lazy"
+      />
 
       <div className="flex flex-col gap-y-4">
-        <h2 className="text-base font-medium">{product.title}</h2>
+        <h2 className="text-base font-medium">{product?.title}</h2>
 
         <div>
           <div className="flex items-center gap-x-1.5">
@@ -17,7 +22,7 @@ const ProductItem = ({ product }: { product: TProduct }) => {
 
             <ChevronDown />
 
-            <p className="text-base text-[#1F8394]">{product.rating.count}</p>
+            <p className="text-base text-[#1F8394]">{product?.rating?.count}</p>
           </div>
           <p className="text-sm text-[#717171]">1k+ bought in past month</p>
         </div>
@@ -25,7 +30,9 @@ const ProductItem = ({ product }: { product: TProduct }) => {
         <div>
           <p className="text-2xl font-normal">
             ₹{product.price}{" "}
-            <span className="text-sm text-[#7F7F7F]">(Discount% off)</span>
+            <span className="text-sm text-[#7F7F7F]">
+              ({product?.discount}% off)
+            </span>
           </p>
           <p className="text-xs text-[#7F7F7F]">Save extra with No Cost EMI</p>
         </div>

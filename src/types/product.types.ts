@@ -19,6 +19,7 @@ export type TProduct = {
   title: string;
   brand: string;
   price: number;
+  discount: number;
   images: string[];
   sellerId: number;
   description: string;
