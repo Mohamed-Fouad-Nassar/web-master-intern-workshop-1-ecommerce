@@ -1,13 +1,16 @@
-import axios from "axios";
+// import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { RootState } from "../../store";
-import handleAxiosErr from "../../../utils/handleAxiosErr";
+// import handleAxiosErr from "../../../utils/handleAxiosErr";
 
 const createOrder = createAsyncThunk(
   "orders/createOrder",
   async (subtotal: number, thunkAPI) => {
-    const { rejectWithValue, getState } = thunkAPI;
+    const {
+      // rejectWithValue,
+      getState,
+    } = thunkAPI;
     const { cart } = getState() as RootState;
 
     const orderItems = cart.products?.map((el) => ({
