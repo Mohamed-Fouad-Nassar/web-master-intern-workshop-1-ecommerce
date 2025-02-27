@@ -30,6 +30,8 @@ export type TProduct = {
   };
 };
 
+export type TProductWithQty = TProduct & { quantity: number };
+
 export type TProductSeller = {
   id: number;
   name: string;

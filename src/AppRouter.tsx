@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Thanks = lazy(() => import("./pages/Thanks"));
 const Product = lazy(() => import("./pages/Product"));
 const Products = lazy(() => import("./pages/Products"));
 
@@ -60,6 +61,14 @@ function AppRouter() {
             element={
               <SuspenseFallback>
                 <Cart />
+              </SuspenseFallback>
+            }
+          />
+          <Route
+            path="thanks"
+            element={
+              <SuspenseFallback>
+                <Thanks />
               </SuspenseFallback>
             }
           />
