@@ -1,75 +1,93 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
+import NotFound from "./NotFound";
+import Modal from "../components/Modal";
 import Button from "../components/Button";
+import useCart from "../features/cart/useCart";
 import CartItem from "../features/cart/CartItem";
-
-import img1 from "../data/images/product-img-1.png";
-import img2 from "../data/images/product-img-2.png";
-import img3 from "../data/images/product-img-3.jpg";
-
-export type TCartItem = {
-  id: number;
-  img: string;
-  title: string;
-  price: number;
-  quantity: number;
-};
-
-const cartItems: TCartItem[] = [
-  {
-    id: 1,
-    title:
-      "LG 7 Kg, 5 Star, Direct Drive Technology, Steam Wash, 6 Motion DD, Smart Diagnosis, Fully-Automatic Front Load",
-    price: 12.53,
-    quantity: 2,
-    img: img1,
-  },
-  {
-    id: 2,
-    title: "Sony Alpha 7 IV Full-Frame Mirrorless Camera ",
-    price: 200.23,
-    quantity: 1,
-    img: img2,
-  },
-  {
-    id: 3,
-    title: "Samsung Galaxy S23 Ultra 5G, 256GB, Phantom Black",
-    price: 199.98,
-    quantity: 3,
-    img: img3,
-  },
-];
+import SpinnerFullScreen from "../components/SpinnerFullScreen";
 
 export default function Cart() {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const {
+    error,
+    isLoading,
+    handleChangeQty,
+    handlePlaceOrder,
+    handleRemoveFromCart,
+    finalProducts: items,
+  } = useCart();
+
+  if (isLoading) return <SpinnerFullScreen />;
+  if (error) return <NotFound />;
+
   const currency = "$";
-  const totalSub = cartItems
-    .reduce((acc, item) => acc + item.price * item.quantity, 0)
+  const subTotal = items
+    .reduce((acc, item) => acc + item.price * (item.quantity || 1), 0)
     .toFixed(2);
+
+  function handleConfirmOrder(subTotal: number) {
+    console.log("Check out Order...");
+    navigate("/thanks", { replace: true });
+    setIsOpen(false);
+    handlePlaceOrder(subTotal);
+  }
 
   return (
     <div className="p-4 min-h-[calc(100vh-70px)] bg-[#eaeded] flex flex-col lg:flex-row justify-between items-start gap-4">
-      <section className="flex-1 p-4 bg-white rounded-xs">
+      <section className="flex-1 w-full p-4 bg-white rounded">
         <h2 className="pb-4 mb-4 font-medium text-2xl border-b border-gray-200">
           Shopping Cart
         </h2>
 
-        {cartItems.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
-
-        <h3 className="mt-4 text-end font-medium text-lg">
-          Subtotal ({cartItems?.length} items): {currency}
-          {totalSub}
-        </h3>
+        {!items?.length ? (
+          <p className="italic">No items in cart</p>
+        ) : (
+          <>
+            {items.map((item) => (
+              <CartItem
+                item={item}
+                key={item.id}
+                handleChangeQty={handleChangeQty}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
+            ))}
+            <h3 className="mt-4 text-end font-medium text-lg">
+              Subtotal ({items?.length} items): {currency}
+              {subTotal}
+            </h3>
+          </>
+        )}
       </section>
 
-      <section className="mx-auto w-full text-center max-w-sm p-4 bg-white rounded-xs">
-        <h3 className="pb-4 font-medium text-lg">
-          Subtotal ({cartItems?.length} items): {currency}
-          {totalSub}
-        </h3>
-        <Button size="sm" className="w-full">
-          Proceed to checkout
-        </Button>
-      </section>
+      {!items?.length ? null : (
+        <section className="mx-auto w-full text-center max-w-sm p-4 bg-white rounded">
+          <h3 className="pb-4 font-medium text-lg">
+            Subtotal ({items?.length} items): {currency}
+            {subTotal}
+          </h3>
+          <Button onClick={() => setIsOpen(true)} className="w-full">
+            Proceed to checkout
+          </Button>
+          <Modal
+            isOpen={isOpen}
+            title="Confirm Placing Order"
+            handleCloseModal={() => setIsOpen(false)}
+            callBack={() => handleConfirmOrder(Number(subTotal))}
+          >
+            <p>
+              Are you sure you want to place order with Subtotal:
+              <span className="ml-1 font-bold">
+                {currency}
+                {subTotal}
+              </span>
+            </p>
+          </Modal>
+        </section>
+      )}
     </div>
   );
 }

@@ -1,8 +1,18 @@
 import ItemQtyCounter from "./ItemQtyCounter";
 
-import { TCartItem } from "../../pages/Cart";
+import { TProductWithQty } from "../../types/product.types";
 
-export default function CartItem({ item }: { item: TCartItem }) {
+type TCartItemProps = {
+  item: TProductWithQty;
+  handleRemoveFromCart: (id: number) => void;
+  handleChangeQty: (id: number, quantity: number) => void;
+};
+
+export default function CartItem({
+  item,
+  handleChangeQty,
+  handleRemoveFromCart,
+}: TCartItemProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-4 items-start border-b border-gray-200 py-4">
       <img
@@ -17,7 +27,12 @@ export default function CartItem({ item }: { item: TCartItem }) {
         <span className="text-sky-600">FREE International Returns</span>
 
         <div className="mt-4 sm:mt-8 flex justify-between items-center">
-          <ItemQtyCounter quantity={item.quantity} />
+          <ItemQtyCounter
+            id={item.id}
+            quantity={item.quantity}
+            handleChangeQty={handleChangeQty}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
           <span className="sm:hidden text-end font-bold text-lg">
             ${item.price}
           </span>

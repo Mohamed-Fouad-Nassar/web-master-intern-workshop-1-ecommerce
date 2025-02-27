@@ -1,6 +1,7 @@
 import { MapPin } from "lucide-react";
 
 import ProductPrice from "./ProductPrice";
+import Button from "../../components/Button";
 
 import { formatDate } from "../../utils/helpers";
 
@@ -66,12 +67,10 @@ export default function ProductActions({
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <button className="w-full py-1 px-3 text-lg text-center rounded-2xl bg-primary">
-          Add To Cart
-        </button>
-        <button className="w-full py-1 px-3 text-lg text-center rounded-2xl bg-secondary">
+        <Button className="w-full">Add To Cart</Button>
+        <Button className="w-full" variation="secondary">
           Buy Now
-        </button>
+        </Button>
       </div>
 
       <table className="mt-6 text-gray-500">
