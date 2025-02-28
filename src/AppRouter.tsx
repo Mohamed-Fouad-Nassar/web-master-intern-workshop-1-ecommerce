@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes, BrowserRouter } from "react-router";
 
 import SuspenseFallback from "./components/SuspenseFallback";
@@ -22,6 +23,7 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Toaster position="top-right" />
       <Routes>
         {/* Main Routes */}
         <Route
