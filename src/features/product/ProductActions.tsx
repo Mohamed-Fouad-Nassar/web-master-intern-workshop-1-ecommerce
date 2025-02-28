@@ -2,17 +2,23 @@ import { MapPin } from "lucide-react";
 
 import ProductPrice from "./ProductPrice";
 import Button from "../../components/Button";
+import AddToCartForm from "../cart/AddToCartForm";
 
 import { formatDate } from "../../utils/helpers";
 
 import { TProductSeller } from "../../types/product.types";
+import useProductCart from "../cart/useProductCart";
+import { useNavigate } from "react-router";
+import ItemQtyCounter from "../cart/ItemQtyCounter";
 
 type TProductActionsProps = {
+  id: number;
   price: number;
   seller: TProductSeller;
 };
 
 export default function ProductActions({
+  id,
   price,
   seller: {
     name: sellerName,
@@ -26,6 +32,10 @@ export default function ProductActions({
   const maxDeliveryDate = formatDate(
     new Date(today.setDate(today.getDate() + max))
   );
+  const navigate = useNavigate();
+
+  const { isInCart, quantity, handleChangeQty, handleRemoveFromCart } =
+    useProductCart(id);
 
   return (
     <section className="w-full lg:w-[250px] p-4 space-y-2 border border-gray-400 rounded font-ibm-con order-2 lg:order-3">
@@ -54,23 +64,28 @@ export default function ProductActions({
       </p>
 
       <div className="mt-4 space-y-3">
-        <select
-          defaultValue=""
-          className="w-full p-2 bg-[#F0F2F2] border border-gray-300 rounded"
-        >
-          <option value="" hidden>
-            Quantity: 1
-          </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <Button className="w-full">Add To Cart</Button>
-        <Button className="w-full" variation="secondary">
-          Buy Now
-        </Button>
+        {isInCart ? (
+          <>
+            <div className="flex justify-center">
+              <ItemQtyCounter
+                id={id}
+                quantity={quantity}
+                handleChangeQty={handleChangeQty}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
+            </div>
+            <Button
+              size="sm"
+              variation="third"
+              className="w-full"
+              onClick={() => navigate("/cart")}
+            >
+              Go To Cart
+            </Button>
+          </>
+        ) : (
+          <AddToCartForm productId={id} />
+        )}
       </div>
 
       <table className="mt-6 text-gray-500">
