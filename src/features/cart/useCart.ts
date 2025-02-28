@@ -7,8 +7,8 @@ import {
   removeFromCart,
   getCartProducts,
 } from "../../store/cart/cartSlice";
-import { createOrder, resetOrderState } from "../../store/orders/orderSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { createOrder, resetOrderState } from "../../store/orders/orderSlice";
 
 export default function useCart() {
   const dispatch = useAppDispatch();

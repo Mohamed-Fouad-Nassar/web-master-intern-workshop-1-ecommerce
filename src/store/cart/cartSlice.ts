@@ -8,12 +8,12 @@ type TCartState = {
   isLoading: boolean;
   error: string | null;
   products: TProductWithQty[];
-
   items: { [key: string]: number };
 };
 
 const initialState: TCartState = {
-  items: { "11": 10, "12": 2, "14": 1, "15": 6 },
+  // items: { "11": 10, "12": 2, "14": 1, "15": 6 },
+  items: {},
   error: null,
   products: [],
   isLoading: true,
@@ -24,9 +24,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const id = action.payload;
-      if (state.items[id]) state.items[id]++;
-      else state.items[id] = 1;
+      const { id, quantity } = action.payload;
+      if (state.items[id]) state.items[id] += quantity;
+      else state.items[id] = quantity || 1;
     },
 
     changeQty: (state, action) => {
