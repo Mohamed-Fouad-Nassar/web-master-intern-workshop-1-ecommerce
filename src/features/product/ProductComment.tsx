@@ -1,3 +1,5 @@
+import Stars from "../../components/Stars";
+
 import { TFinalProductComment } from "../../types/product.types";
 
 type TProductCommentProps = {
@@ -24,7 +26,7 @@ export default function ProductComment({
         </div>
 
         <div className="flex gap-3 items-center">
-          <span>{"⭐".repeat(rating)}</span>
+          <Stars rate={rating} />
           <h4 className="font-bold text-lg font-hind">{title}</h4>
         </div>
 

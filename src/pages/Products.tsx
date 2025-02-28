@@ -1,5 +1,5 @@
-import ProductItem from "../components/ProductItem";
 import Spinner from "../components/Spinner";
+import ProductItem from "../features/products/ProductItem";
 import ProductsFilter from "../features/products/ProductsFilter";
 
 import useProducts from "../features/products/useProduct";
@@ -18,7 +18,7 @@ export default function Products() {
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 container">
         {products.map((product) => (
           <li
-            className="px-2.5 py-5 col-span-1 border border-[#D9D9D9]"
+            className="px-2.5 py-5 col-span-1 border border-gray-200"
             key={product.id}
           >
             <ProductItem product={product} />
