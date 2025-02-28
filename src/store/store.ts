@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import cart from "./cart/cartSlice";
 import orders from "./orders/orderSlice";
+import auth from "./auth/authSlice";
 
 // const cartPersistConfig = {
 //   key: "cart",
@@ -15,7 +16,7 @@ export const store = configureStore({
   reducer: {
     orders,
     cart,
-
+    auth,
     // cart: persistReducer(cartPersistConfig, cart),
   },
 });

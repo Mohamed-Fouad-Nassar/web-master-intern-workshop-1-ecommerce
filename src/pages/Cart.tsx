@@ -15,6 +15,8 @@ export default function Cart() {
   const {
     error,
     isLoading,
+    accessToken,
+    handleClearCart,
     handleChangeQty,
     handlePlaceOrder,
     handleRemoveFromCart,
@@ -39,9 +41,14 @@ export default function Cart() {
   return (
     <div className="p-4 min-h-[calc(100vh-70px)] bg-[#eaeded] flex flex-col lg:flex-row justify-between items-start gap-4">
       <section className="flex-1 w-full p-4 bg-white rounded">
-        <h2 className="pb-4 mb-4 font-medium text-2xl border-b border-gray-200">
-          Shopping Cart
-        </h2>
+        <div className="flex gap-2 justify-between items-center pb-4 mb-4 border-b border-gray-200">
+          <h2 className="font-medium text-2xl">Shopping Cart</h2>
+          {items?.length ? (
+            <Button size="sm" variation="third" onClick={handleClearCart}>
+              Clear Cart
+            </Button>
+          ) : null}
+        </div>
 
         {!items?.length ? (
           <p className="italic">No items in cart</p>
@@ -69,23 +76,29 @@ export default function Cart() {
             Subtotal ({items?.length} items): {currency}
             {subTotal}
           </h3>
-          <Button onClick={() => setIsOpen(true)} className="w-full">
-            Proceed to checkout
-          </Button>
-          <Modal
-            isOpen={isOpen}
-            title="Confirm Placing Order"
-            handleCloseModal={() => setIsOpen(false)}
-            callBack={() => handleConfirmOrder(Number(subTotal))}
-          >
-            <p>
-              Are you sure you want to place order with Subtotal:
-              <span className="ml-1 font-bold">
-                {currency}
-                {subTotal}
-              </span>
-            </p>
-          </Modal>
+          {accessToken ? (
+            <>
+              <Button onClick={() => setIsOpen(true)} className="w-full">
+                Proceed to checkout
+              </Button>
+              <Modal
+                isOpen={isOpen}
+                title="Confirm Placing Order"
+                handleCloseModal={() => setIsOpen(false)}
+                callBack={() => handleConfirmOrder(Number(subTotal))}
+              >
+                <p>
+                  Are you sure you want to place order with Subtotal:
+                  <span className="ml-1 font-bold">
+                    {currency}
+                    {subTotal}
+                  </span>
+                </p>
+              </Modal>
+            </>
+          ) : (
+            <p className="italic">Please login to place order</p>
+          )}
         </section>
       )}
     </div>
