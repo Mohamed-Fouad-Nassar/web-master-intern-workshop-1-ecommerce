@@ -2,16 +2,19 @@ import { ChevronDown } from "lucide-react";
 import { TProduct } from "../types/product.types";
 import Button from "./Button";
 import Stars from "./Stars";
+import { Link } from "react-router";
 
 const ProductItem = ({ product }: { product: TProduct }) => {
   return (
     <div>
-      <img
-        src={product?.img}
-        alt={product?.title}
-        className="mb-6 w-64 h-48 object-cover"
-        loading="lazy"
-      />
+      <Link to={`/products/${product.id}`}>
+        <img
+          src={product?.img}
+          alt={product?.title}
+          className="mb-6 w-64 h-48 object-cover"
+          loading="lazy"
+        />
+      </Link>
 
       <div className="flex flex-col gap-y-4">
         <h2 className="text-base font-medium">{product?.title}</h2>
