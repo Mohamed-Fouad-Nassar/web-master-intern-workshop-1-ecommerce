@@ -2,6 +2,7 @@ import Stars from "../../components/Stars";
 import ImagesSlider from "../../components/ImagesSlider";
 
 type TProductSliderProps = {
+  img: string;
   title: string;
   brand: string;
   images: string[];
@@ -9,14 +10,15 @@ type TProductSliderProps = {
 };
 
 export default function ProductSlider({
+  img,
   title,
   brand,
   rating,
   images,
 }: TProductSliderProps) {
   return (
-    <section className="flex-1">
-      <div className="lg:hidden">
+    <section className="flex-1 w-full">
+      <div className="lg:hidden mb-10">
         <div className="flex gap-4 items-start justify-between mb-1.5">
           <span className="text-third font-inika uppercase">
             brand: {brand}
@@ -28,8 +30,8 @@ export default function ProductSlider({
         <h2 className="text-xl font-medium text-gray-700">{title}</h2>
       </div>
 
-      <div className="mt-4 lg:mt-0 py-28 px-10 bg-gray-50 rounded text-center">
-        <ImagesSlider images={images} />
+      <div className="mt-4 lg:mt-0 rounded text-center">
+        <ImagesSlider img={img} images={images} />
       </div>
     </section>
   );
