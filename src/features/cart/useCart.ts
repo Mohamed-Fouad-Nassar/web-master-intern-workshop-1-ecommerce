@@ -15,6 +15,7 @@ export default function useCart() {
   const { isLoading, error, products, items } = useAppSelector(
     (state) => state.cart
   );
+  const { accessToken } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getCartProducts());
@@ -55,6 +56,7 @@ export default function useCart() {
   return {
     error,
     isLoading,
+    accessToken,
     finalProducts,
     handleChangeQty,
     handleClearCart,
