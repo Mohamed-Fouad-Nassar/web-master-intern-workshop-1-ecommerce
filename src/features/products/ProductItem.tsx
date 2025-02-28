@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react";
-import { TProduct } from "../types/product.types";
-import Button from "./Button";
-import Stars from "./Stars";
+import { TProduct } from "../../types/product.types";
+import Button from "../../components/Button";
+import Stars from "../../components/Stars";
 import { Link } from "react-router";
 
 const ProductItem = ({ product }: { product: TProduct }) => {

@@ -1,6 +1,6 @@
-import ProductItem from "../components/ProductItem";
+import ProductItem from "../features/products/ProductItem";
 import Spinner from "../components/Spinner";
-import ProductsFilter from "../components/ProductsFilter";
+import ProductsFilter from "../features/products/ProductsFilter";
 
 import useProducts from "../features/products/useProduct";
 import { useSearchParams } from "react-router";

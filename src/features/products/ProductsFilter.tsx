@@ -1,6 +1,6 @@
-import BrandsFilter from "./BrandsFilter";
-import PriceFilter from "./PriceFilter";
-import Stars from "./Stars";
+import BrandsFilter from "../../components/BrandsFilter";
+import PriceFilter from "../../components/PriceFilter";
+import Stars from "../../components/Stars";
 
 const ProductsFilter = () => {
   return (
