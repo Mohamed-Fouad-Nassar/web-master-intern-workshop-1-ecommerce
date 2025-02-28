@@ -12,9 +12,6 @@ export default function Products() {
   const [searchParams] = useSearchParams();
 
   const filterValue = searchParams.get("price") || "all";
-  const brandsFilterValue = searchParams.get("brands") || "all";
-
-  console.log(brandsFilterValue);
 
   let filteredProducts: TProduct[] | undefined;
 
