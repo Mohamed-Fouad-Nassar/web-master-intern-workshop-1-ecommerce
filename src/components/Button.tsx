@@ -15,9 +15,9 @@ export default function Button({
     <button
       className={`rounded-full text-center cursor-pointer ${
         variation === "primary"
-          ? "bg-primary"
+          ? "bg-primary hover:bg-primary/80"
           : variation === "secondary"
-          ? "bg-secondary"
+          ? "bg-secondary hover:bg-secondary/80"
           : "bg-transparent border border-gray-300"
       } ${
         size === "sm"

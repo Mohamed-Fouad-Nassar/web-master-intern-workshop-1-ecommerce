@@ -35,7 +35,11 @@ export default function Product() {
           images={product.images}
           rating={product.rating}
         />
-        <ProductActions price={product.price} seller={product?.seller} />
+        <ProductActions
+          id={product.id}
+          price={product.price}
+          seller={product?.seller}
+        />
         <ProductDetails product={product} />
       </div>
 

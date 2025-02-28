@@ -7,9 +7,11 @@ const AuthLayout = lazy(() => import("./layouts/AuthLayout"));
 const MainLayout = lazy(() => import("./layouts/MainLayout"));
 
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Thanks = lazy(() => import("./pages/Thanks"));
 const Product = lazy(() => import("./pages/Product"));
 const Products = lazy(() => import("./pages/Products"));
 
@@ -19,6 +21,7 @@ const Register = lazy(() => import("./pages/Register"));
 function AppRouter() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Main Routes */}
         <Route
@@ -60,6 +63,14 @@ function AppRouter() {
             element={
               <SuspenseFallback>
                 <Cart />
+              </SuspenseFallback>
+            }
+          />
+          <Route
+            path="thanks"
+            element={
+              <SuspenseFallback>
+                <Thanks />
               </SuspenseFallback>
             }
           />
