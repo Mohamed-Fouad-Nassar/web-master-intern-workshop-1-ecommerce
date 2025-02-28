@@ -13,12 +13,12 @@ export default function Button({
 }: TButtonProps) {
   return (
     <button
-      className={`rounded-full text-center cursor-pointer ${
+      className={`rounded-lg text-center cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 ${
         variation === "primary"
           ? "bg-primary hover:bg-primary/80"
           : variation === "secondary"
           ? "bg-secondary hover:bg-secondary/80"
-          : "bg-transparent border border-gray-300"
+          : "bg-transparent border border-gray-300 shadow-sm hover:bg-gray-50"
       } ${
         size === "sm"
           ? "py-1 px-3 text-sm"

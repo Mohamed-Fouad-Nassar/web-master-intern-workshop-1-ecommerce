@@ -2,14 +2,27 @@ import Button from "../../components/Button";
 import FormRow from "../../components/FormRow";
 import Spinner from "../../components/Spinner";
 
-import useSignIn from "./useSignIn";
+import useRegister from "./useRegister";
 
-export default function SigninForm() {
-  const { register, submitForm, handleSubmit, isLoadingAction, errors } =
-    useSignIn();
+export default function RegisterForm() {
+  const { errors, register, submitForm, handleSubmit, isLoadingAction } =
+    useRegister();
 
   return (
-    <form className="mb-6" onSubmit={handleSubmit(submitForm)}>
+    <form onSubmit={handleSubmit(submitForm)}>
+      <FormRow label="Your Name" error={errors?.name?.message}>
+        <input
+          id="name"
+          type="text"
+          {...register("name")}
+          placeholder="John Doe"
+          disabled={isLoadingAction}
+          className={`py-2 px-3 border-1 border-gray-500 rounded-lg focus:ring focus:ring-black ${
+            errors?.name?.message ? "border-red-600" : ""
+          }`}
+        />
+      </FormRow>
+
       <FormRow
         label="Email or mobile phone number"
         error={errors?.email?.message}
@@ -27,13 +40,13 @@ export default function SigninForm() {
 
       <FormRow label="Password" error={errors?.password?.message}>
         <input
-          id="password"
-          type="password"
+          id="Password"
+          type="Password"
           {...register("password")}
           disabled={isLoadingAction}
-          className={`py-2 px-3 border-1 border-gray-500 rounded-lg focus:ring  ${
+          className={`py-2 px-3 border-1 border-gray-500 rounded-lg focus:ring focus:ring-black${
             errors?.password?.message ? "border-red-600" : ""
-          }`}
+          } `}
         />
       </FormRow>
 
@@ -42,7 +55,7 @@ export default function SigninForm() {
         disabled={isLoadingAction}
         className="w-full font-ibm-con"
       >
-        {isLoadingAction ? <Spinner size="size-6" /> : "Sign In"}
+        {isLoadingAction ? <Spinner size="size-6" /> : "Register"}
       </Button>
     </form>
   );
