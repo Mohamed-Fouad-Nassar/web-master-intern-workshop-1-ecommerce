@@ -14,4 +14,10 @@
   --color-secondary: #de7921;
   --color-third: #1f8394;
   --color-fourth: #2A8FD7;
+
+
+}
+
+.nav-mob-flow::-webkit-scrollbar {
+  width: 0;
 }
