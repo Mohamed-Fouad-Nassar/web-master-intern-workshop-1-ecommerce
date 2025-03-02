@@ -46,8 +46,6 @@ export default function useCart() {
   const handleClearCart = () => dispatch(clearCart());
 
   const handlePlaceOrder = (subtotal: number) => {
-    console.log("Check out Order...");
-    console.log("Subtotal: ", subtotal);
     dispatch(createOrder(subtotal))
       .unwrap()
       .then(() => dispatch(clearCart()));

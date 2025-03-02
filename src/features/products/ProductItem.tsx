@@ -20,14 +20,14 @@ const ProductItem = memo(({ product }: { product: TProduct }) => {
 
   return (
     <>
-       <Link to={`/products/${product?.id}`}>
-      <img
-        loading="lazy"
-        src={product?.img}
-        alt={product?.title}
-        className="mb-6 max-w-full aspect-square object-contain"
-      />
-          </Link>
+      <Link to={`/products/${product?.id}`}>
+        <img
+          loading="lazy"
+          src={product?.img}
+          alt={product?.title}
+          className="mb-6 max-w-full aspect-square object-contain"
+        />
+      </Link>
 
       <div className="flex flex-col gap-y-4">
         <Link
@@ -72,7 +72,7 @@ const ProductItem = memo(({ product }: { product: TProduct }) => {
         ) : (
           <Button
             size="sm"
-            className="w-fit py-1.5"
+            className="w-fit py-1.5 !rounded-full"
             onClick={() => handleAddToCart(product?.id)}
           >
             Add to cart

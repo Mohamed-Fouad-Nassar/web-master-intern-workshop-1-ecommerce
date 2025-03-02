@@ -1,9 +1,11 @@
-import Spinner from "../components/Spinner";
+import { useSearchParams } from "react-router";
+
 import ProductItem from "../features/products/ProductItem";
+import SpinnerFullScreen from "../components/SpinnerFullScreen";
 import ProductsFilter from "../features/products/ProductsFilter";
 
 import useProducts from "../features/products/useProduct";
-import { useSearchParams } from "react-router";
+
 import { TProduct } from "../types/product.types";
 
 export default function Products() {
@@ -37,7 +39,7 @@ export default function Products() {
       (product) => product.price >= 30000 && product.price <= 45000
     );
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <SpinnerFullScreen />;
   if (error) return <div className="text-red">Error: {error?.message}</div>;
   if (!filteredProducts?.length)
     return <div className="italic">No products found</div>;
