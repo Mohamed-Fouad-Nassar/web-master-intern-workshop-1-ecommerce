@@ -12,7 +12,6 @@ type TCartState = {
 };
 
 const initialState: TCartState = {
-  // items: { "11": 10, "12": 2, "14": 1, "15": 6 },
   items: {},
   error: null,
   products: [],

@@ -32,7 +32,6 @@ export default function Cart() {
     .toFixed(2);
 
   function handleConfirmOrder(subTotal: number) {
-    console.log("Check out Order...");
     navigate("/thanks", { replace: true });
     setIsOpen(false);
     handlePlaceOrder(subTotal);
@@ -78,7 +77,10 @@ export default function Cart() {
           </h3>
           {accessToken ? (
             <>
-              <Button onClick={() => setIsOpen(true)} className="w-full">
+              <Button
+                onClick={() => setIsOpen(true)}
+                className="w-full !rounded-full"
+              >
                 Proceed to checkout
               </Button>
               <Modal
