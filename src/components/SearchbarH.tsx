@@ -1,46 +1,40 @@
+import { useState } from "react";
 import { Search } from "lucide-react";
+import { useNavigate, useSearchParams } from "react-router";
+
+import Button from "./Button";
 
 const SearchbarH = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const searchQuery = searchParams.get("query") || "";
+  const [query, setQuery] = useState(searchQuery);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!query) navigate(`/products`);
+    navigate(`/products?query=${query}`);
+  }
+
   return (
     <div className="mx-2">
-      <div className="relative">
-        <select
-          name="departments"
-          id="departments"
-          className="hidden md:block  bg-[#D9D9D9] text-[#676767] border-none outline-none rounded-bl-md rounded-tl-md p-2 absolute left-0"
-        >
-          <option className="text-black bg-white" value="All Departments">
-            All
-          </option>
-          <option className="text-black bg-white" value="baby">
-            Baby
-          </option>
-          <option className="text-black bg-white" value="books">
-            Books
-          </option>
-          <option className="text-black bg-white" value="computers">
-            Computers
-          </option>
-
-          <option className="text-black bg-white" value="fashion">
-            Fashion
-          </option>
-          <option className="text-black bg-white" value="games">
-            Games
-          </option>
-          <option className="text-black bg-white" value="movies">
-            Movies
-          </option>
-        </select>
+      <form onSubmit={handleSubmit} className="relative">
         <input
           type="text"
+          value={query}
           placeholder="Search Amazon.eg"
-          className="bg-white text-black rounded-md md:rounded-br-md md:rounded-tr-md pl-3 w-full py-2   md:pl-32"
+          onChange={(e) => setQuery(e.target.value)}
+          className="bg-white text-black rounded-md w-full px-4 py-2 outline-0 focus:ring-2 focus:ring-primary"
         />
-        <button className="bg-[#FFCC00] py-2 px-1.5 rounded-md absolute right-0  hover:bg-[#FCBC00] cursor-pointer">
-          <Search color="black" />
-        </button>
-      </div>
+        <Button
+          type="submit"
+          className="absolute right-0 top-0 text-black flex items-center gap-1.5"
+        >
+          <Search className="size-5" />
+          <span className="hidden md:block">Search</span>
+        </Button>
+      </form>
     </div>
   );
 };

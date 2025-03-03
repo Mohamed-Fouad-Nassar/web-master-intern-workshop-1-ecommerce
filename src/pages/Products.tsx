@@ -14,6 +14,7 @@ export default function Products() {
   const [searchParams] = useSearchParams();
 
   const filterValue = searchParams.get("price") || "all";
+  const searchQuery = searchParams.get("query") || "";
 
   let filteredProducts: TProduct[] | undefined;
 
@@ -39,25 +40,34 @@ export default function Products() {
       (product) => product.price >= 30000 && product.price <= 45000
     );
 
+  if (searchQuery) {
+    filteredProducts = filteredProducts?.filter((product) =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
   if (isLoading) return <SpinnerFullScreen />;
   if (error) return <div className="text-red">Error: {error?.message}</div>;
-  if (!filteredProducts?.length)
-    return <div className="italic">No products found</div>;
 
   return (
     <section className="flex items-start font-inter px-2 pt-5 pb-12 gap-x-1.5 sm:px-3 sm:gap-x-2.5">
       <ProductsFilter />
-
-      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 container">
-        {filteredProducts?.map((product) => (
-          <li
-            className="px-2.5 py-5 col-span-1 border border-gray-200"
-            key={product.id}
-          >
-            <ProductItem product={product} />
-          </li>
-        ))}
-      </ul>
+      {filteredProducts?.length ? (
+        <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 container">
+          {filteredProducts?.map((product) => (
+            <li
+              className="px-2.5 py-5 col-span-1 border border-gray-200"
+              key={product.id}
+            >
+              <ProductItem product={product} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="flex-1 italic text-center py-40">
+          No products found in this category
+        </p>
+      )}
     </section>
   );
 }
