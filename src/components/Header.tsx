@@ -1,13 +1,6 @@
-import {
-  X,
-  Menu,
-  House,
-  MapPin,
-  ShoppingCart,
-  CircleUserRound,
-} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
+import { X, Menu, House, MapPin, ShoppingCart } from "lucide-react";
 
 import UserNav from "./UserNav";
 import SearchbarH from "./SearchbarH";
@@ -71,13 +64,6 @@ export default function Header() {
         <div className="flex fixed right-0 left-0 top-0 bottom-0 z-20">
           <div className="w-[80%] h-full">
             <div className="bg-header-secondary py-4 px-3">
-              <Link
-                to="/signin"
-                className="flex justify-end w-full gap-1.5 mb-3"
-              >
-                Sign in
-                <CircleUserRound />
-              </Link>
               <span className="font-semibold text-lg">Browse</span>
               <h2 className="text-2xl font-bold">Amazon</h2>
             </div>
