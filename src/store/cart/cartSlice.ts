@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import getCartProducts from "./actions/getCartProducts";
+import getTotalCartItemsCount from "./selectors/getTotalCartItemsCountSelector";
 
 import { TProductWithQty } from "../../types/product.types";
 
@@ -69,7 +70,7 @@ const cartSlice = createSlice({
   },
 });
 
-export { getCartProducts };
+export { getCartProducts, getTotalCartItemsCount };
 export default cartSlice.reducer;
 export const { addToCart, changeQty, clearCart, cleanUpCart, removeFromCart } =
   cartSlice.actions;

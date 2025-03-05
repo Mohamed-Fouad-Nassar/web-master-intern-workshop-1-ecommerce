@@ -6,11 +6,17 @@ import UserNav from "./UserNav";
 import SearchbarH from "./SearchbarH";
 import CategoriesNav from "./CategoriesNav";
 
+import { useAppSelector } from "../store/hooks";
+import { getTotalCartItemsCount } from "../store/cart/cartSlice";
+
 import flag from "../data/India.png";
 import logo from "../data/Amazonwhite.png";
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
+  const totalCartItemsCount = useAppSelector(getTotalCartItemsCount);
+
+  console.log("cart count: ", totalCartItemsCount);
 
   return (
     <header className=" text-white">
@@ -47,9 +53,14 @@ export default function Header() {
 
         <div className="min-w-fit flex items-center gap-4">
           <UserNav />
-          <Link to="/cart" className="cursor-pointer flex gap-1">
+          <Link to="/cart" className="relative cursor-pointer flex gap-1">
             <ShoppingCart size={28} />
             <p className="font-semibold text-sm self-end">Cart</p>
+            {totalCartItemsCount !== 0 ? (
+              <span className="absolute -top-2.5 left-2 text-xs bg-third w-4 h-4 rounded-full flex justify-center items-center">
+                {totalCartItemsCount}
+              </span>
+            ) : null}
           </Link>
         </div>
       </div>

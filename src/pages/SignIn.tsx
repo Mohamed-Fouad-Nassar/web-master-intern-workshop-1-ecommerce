@@ -1,5 +1,5 @@
-import { Triangle } from "lucide-react";
 import { useNavigate } from "react-router";
+import { AlertCircle, Triangle } from "lucide-react";
 
 import Button from "../components/Button";
 import SigninForm from "../features/auth/SigninForm";
@@ -12,6 +12,11 @@ const SignIn = () => {
       <div className="flex items-center justify-center">
         <div className="px-4 py-8 mb-4 md:p-8 rounded-xl max-w-lg border-1 border-gray-600">
           <h2 className="font-ibm-con text-2xl font-medium mb-4">Sign in</h2>
+
+          <p className="px-4 py-2 bg-amber-100 border border-amber-300 text-sm text-amber-700 rounded mb-4 flex gap-2 items-center">
+            <AlertCircle className="size-4" />
+            <span>You can use this account or register a new one.</span>
+          </p>
 
           <SigninForm />
 
