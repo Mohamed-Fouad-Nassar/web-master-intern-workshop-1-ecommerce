@@ -1,8 +1,9 @@
-import Spinner from "./Spinner";
 import { Link } from "react-router";
+import { CircleUserRound } from "lucide-react";
+
+import Spinner from "./Spinner";
 
 import { useAppSelector } from "../store/hooks";
-import { CircleUserRound } from "lucide-react";
 
 export default function UserNav() {
   const { isLoading, error, user } = useAppSelector((state) => state.auth);
@@ -28,12 +29,19 @@ export default function UserNav() {
   return (
     <>
       <div>
-        <p className="text-sm">Hello, {user.firstName}</p>
-        <Link to="#">Accounts &amp; Lists</Link>
+        <Link
+          to="/profile"
+          className="text-sm hover:text-third hover:underline"
+        >
+          Hello, {user.firstName}
+        </Link>
       </div>
 
-      <Link to="#" className="hidden sm:block">
-        Returns <br /> &amp; Orders{" "}
+      <Link
+        to="/orders"
+        className="text-sm hidden sm:block hover:text-third hover:underline"
+      >
+        Orders
       </Link>
     </>
   );

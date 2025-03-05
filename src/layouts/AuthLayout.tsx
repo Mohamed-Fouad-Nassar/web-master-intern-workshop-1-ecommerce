@@ -14,12 +14,12 @@ export default function AuthLayout() {
   if (accessToken) return <Navigate to="/" />;
 
   return (
-    <section className="container mx-auto py-8 px-3">
+    <main className="container mx-auto py-8 px-3">
       <div className="flex justify-center">
         <img src={logo} alt="amazon logo" className="max-w-full mt-6 mb-8" />
       </div>
       <Outlet />
       <ConditionsFooter />
-    </section>
+    </main>
   );
 }

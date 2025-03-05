@@ -38,7 +38,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="p-4 min-h-[calc(100vh-70px)] bg-[#eaeded] flex flex-col lg:flex-row justify-between items-start gap-4">
+    <main className="p-4 min-h-[calc(100vh-70px)] bg-[#eaeded] flex flex-col lg:flex-row justify-between items-start gap-4">
       <section className="flex-1 w-full p-4 bg-white rounded">
         <div className="flex gap-2 justify-between items-center pb-4 mb-4 border-b border-gray-200">
           <h2 className="font-medium text-2xl">Shopping Cart</h2>
@@ -103,6 +103,6 @@ export default function Cart() {
           )}
         </section>
       )}
-    </div>
+    </main>
   );
 }

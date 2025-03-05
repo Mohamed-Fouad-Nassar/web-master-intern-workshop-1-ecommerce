@@ -7,7 +7,7 @@ export default function Thanks() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100dvh-125px)] bg-gray-100 text-center px-4">
+    <main className="flex flex-col items-center justify-center min-h-[calc(100dvh-125px)] bg-gray-100 text-center px-4">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md">
         <CheckCircle className="h-16 w-16 text-green-500 mx-auto" />
         <h1 className="text-2xl font-semibold mt-4 text-gray-900">
@@ -21,6 +21,6 @@ export default function Thanks() {
           Back to Home
         </Button>
       </div>
-    </div>
+    </main>
   );
 }

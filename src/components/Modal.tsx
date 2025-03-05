@@ -3,7 +3,7 @@ import Button from "./Button";
 interface ModalProps {
   title?: string;
   isOpen: boolean;
-  callBack: () => void;
+  callBack?: () => void;
   children: React.ReactNode;
   handleCloseModal: () => void;
 }
@@ -20,7 +20,7 @@ export default function Modal({
   return (
     <div
       onClick={handleCloseModal}
-      className="fixed inset-0 flex items-center justify-center bg-white/20 bg-opacity-50 backdrop-blur-sm"
+      className="fixed inset-0 flex items-center justify-center bg-white/20 bg-opacity-50 backdrop-blur-sm z-20"
     >
       <div
         onClick={(e) => e.stopPropagation()}
@@ -35,7 +35,9 @@ export default function Modal({
             ✕
           </button>
         </div>
-        <div className="mt-4 px-4">{children}</div>
+        <div className="mt-4 px-4 max-h-[calc(100dvh-300px)] overflow-y-auto">
+          {children}
+        </div>
         <div className="pt-4 px-6 pb-4 mt-4 flex gap-2 justify-end border-t border-gray-200">
           <Button
             variation="third"
@@ -44,9 +46,11 @@ export default function Modal({
           >
             Cancel
           </Button>
-          <Button className="!py-1.5" onClick={callBack}>
-            Confirm Order
-          </Button>
+          {callBack && (
+            <Button className="!py-1.5" onClick={callBack}>
+              Confirm Order
+            </Button>
+          )}
         </div>
       </div>
     </div>

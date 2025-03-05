@@ -2,20 +2,22 @@ import { Ref } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import useHorizontalScroll from "../hooks/useHorizontalScroll";
+import { Link } from "react-router";
 
 const categories = [
-  { path: "#", title: "Amazon mini TV" },
-  { path: "#", title: "Sell" },
-  { path: "#", title: "Best Sellers" },
-  { path: "#", title: "Today’s Deals" },
-  { path: "#", title: "Mobiles" },
-  { path: "#", title: "Customer Service" },
-  { path: "#", title: "Prime" },
-  { path: "#", title: "Electronics" },
-  { path: "#", title: "Fashion" },
-  { path: "#", title: "New Releases" },
-  { path: "#", title: "Home & Kitchen" },
-  { path: "#", title: "Amazon Pay" },
+  { path: "/products", title: "All" },
+  { path: "/products", title: "Amazon mini TV" },
+  { path: "/products", title: "Sell" },
+  { path: "/products", title: "Best Sellers" },
+  { path: "/products", title: "Today’s Deals" },
+  { path: "/products", title: "Mobiles" },
+  { path: "/products", title: "Customer Service" },
+  { path: "/products", title: "Prime" },
+  { path: "/products", title: "Electronics" },
+  { path: "/products", title: "Fashion" },
+  { path: "/products", title: "New Releases" },
+  { path: "/products", title: "Home & Kitchen" },
+  { path: "/products", title: "Amazon Pay" },
 ];
 
 export default function CategoriesNav() {
@@ -38,12 +40,12 @@ export default function CategoriesNav() {
       >
         {categories.map(({ title, path }) => (
           <li key={title}>
-            <a
+            <Link
+              to={path}
               className="inline-block w-fit px-1 whitespace-nowrap text-center select-none"
-              href={path}
             >
               {title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

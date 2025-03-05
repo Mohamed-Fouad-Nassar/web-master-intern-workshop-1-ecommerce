@@ -17,6 +17,7 @@ export default function SigninForm() {
         <input
           id="email"
           type="email"
+          defaultValue={"user1@gmail.com"}
           {...register("email")}
           disabled={isLoadingAction}
           className={`py-2 px-3 border-1 border-gray-500 rounded-lg focus:ring focus:ring-black ${
@@ -29,6 +30,7 @@ export default function SigninForm() {
         <input
           id="password"
           type="password"
+          defaultValue={"qwer!1234"}
           {...register("password")}
           disabled={isLoadingAction}
           className={`py-2 px-3 border-1 border-gray-500 rounded-lg focus:ring  ${

@@ -50,7 +50,7 @@ export default function Products() {
   if (error) return <div className="text-red">Error: {error?.message}</div>;
 
   return (
-    <section className="flex items-start font-inter px-2 pt-5 pb-12 gap-x-1.5 sm:px-3 sm:gap-x-2.5">
+    <main className="flex items-start font-inter px-2 pt-5 pb-12 gap-x-1.5 sm:px-3 sm:gap-x-2.5">
       <ProductsFilter />
       {filteredProducts?.length ? (
         <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 container">
@@ -68,6 +68,6 @@ export default function Products() {
           No products found in this category
         </p>
       )}
-    </section>
+    </main>
   );
 }
