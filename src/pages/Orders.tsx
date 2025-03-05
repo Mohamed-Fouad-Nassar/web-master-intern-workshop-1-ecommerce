@@ -7,11 +7,10 @@ const titles = ["#", "Items", "Total Price"];
 
 export default function Orders() {
   const { isLoading, error, orders } = useOrders();
-
   const totalPurchases = orders.reduce((acc, order) => acc + order.subtotal, 0);
 
   return (
-    <section className="overflow-x-hidden flex-1 p-4 rounded bg-gray-100">
+    <section className="overflow-x-hidden flex-1 p-4 rounded bg-gray-50">
       <h2 className="text-2xl font-medium mb-4">Orders</h2>
       {isLoading ? (
         <div className="mx-auto">

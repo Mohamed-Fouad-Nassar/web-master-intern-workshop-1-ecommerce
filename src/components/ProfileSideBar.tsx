@@ -14,13 +14,15 @@ export default function ProfileSideBar() {
   const { isLoading, isLoadingAction } = useAppSelector((state) => state.auth);
 
   return (
-    <aside className="w-fit md:w-[220px] p-2 flex flex-col justify-between bg-gray-100 rounded">
+    <aside className="w-fit md:w-[220px] px-2 py-4 flex flex-col justify-between bg-gray-50 rounded">
       <ul className="flex flex-col gap-2">
         <li>
           <Link
             to="profile"
-            className={`flex items-center gap-2 w-full px-4 py-2 rounded hover:bg-primary/20 ${
-              pathname === "/profile" ? "bg-primary/30 hover:bg-primary/30" : ""
+            className={`flex items-center gap-2 w-full px-4 py-2 rounded hover:bg-gray-300/20 ${
+              pathname === "/profile"
+                ? "bg-gray-300/30 hover:bg-gray-300/30"
+                : ""
             }`}
           >
             <User className="size-6 md:size-5" />
@@ -30,8 +32,10 @@ export default function ProfileSideBar() {
         <li>
           <Link
             to="orders"
-            className={`flex items-center gap-2 w-full px-4 py-2 rounded hover:bg-primary/20 ${
-              pathname === "/orders" ? "bg-primary/30 hover:bg-primary/30" : ""
+            className={`flex items-center gap-2 w-full px-4 py-2 rounded hover:bg-gray-300/20 ${
+              pathname === "/orders"
+                ? "bg-gray-300/30 hover:bg-gray-300/30"
+                : ""
             }`}
           >
             <Package className="size-6 md:size-5" />
