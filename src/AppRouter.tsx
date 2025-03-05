@@ -2,21 +2,23 @@ import { lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes, BrowserRouter } from "react-router";
 
+import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
+import ProtectedRoute from "./components/ProtectedRoute";
 import SuspenseFallback from "./components/SuspenseFallback";
 
 const AuthLayout = lazy(() => import("./layouts/AuthLayout"));
 const MainLayout = lazy(() => import("./layouts/MainLayout"));
-
-import NotFound from "./pages/NotFound";
-import ScrollToTop from "./components/ScrollToTop";
+const ProfileLayout = lazy(() => import("./layouts/ProfileLayout"));
 
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Orders = lazy(() => import("./pages/Orders"));
 const Thanks = lazy(() => import("./pages/Thanks"));
-const Product = lazy(() => import("./pages/Product"));
-const Products = lazy(() => import("./pages/Products"));
-
 const SignIn = lazy(() => import("./pages/SignIn"));
+const Product = lazy(() => import("./pages/Product"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Products = lazy(() => import("./pages/Products"));
 const Register = lazy(() => import("./pages/Register"));
 
 function AppRouter() {
@@ -73,6 +75,32 @@ function AppRouter() {
             element={
               <SuspenseFallback>
                 <Thanks />
+              </SuspenseFallback>
+            }
+          />
+        </Route>
+
+        {/* Protected Routes */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <ProfileLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="profile"
+            element={
+              <SuspenseFallback>
+                <Profile />
+              </SuspenseFallback>
+            }
+          />
+          <Route
+            path="orders"
+            element={
+              <SuspenseFallback>
+                <Orders />
               </SuspenseFallback>
             }
           />

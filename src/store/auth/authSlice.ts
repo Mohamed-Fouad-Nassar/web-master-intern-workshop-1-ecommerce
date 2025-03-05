@@ -33,7 +33,7 @@ const authSlice = createSlice({
       state.error = null;
       state.isLoading = false;
     },
-    logout: (state) => {
+    signout: (state) => {
       state.user = null;
       state.error = null;
       state.accessToken = "";
@@ -73,4 +73,4 @@ const authSlice = createSlice({
 
 export { register, signin };
 export default authSlice.reducer;
-export const { resetUi, logout } = authSlice.actions;
+export const { resetUi, signout } = authSlice.actions;

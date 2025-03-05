@@ -19,7 +19,7 @@ export default function Product() {
   if (error || !product) return <NotFound />;
 
   return (
-    <div className="p-4">
+    <main className="p-4">
       <Breadcrumb
         links={[
           { title: "Electronics", path: "/" },
@@ -48,6 +48,6 @@ export default function Product() {
         <ProductRatings rating={product.rating} />
         <ProductComments comments={product?.comments} />
       </div>
-    </div>
+    </main>
   );
 }

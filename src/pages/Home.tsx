@@ -105,7 +105,7 @@ const options = { loop: true };
 
 export default function Home() {
   return (
-    <>
+    <main>
       <HeroSecSlider slides={landingSlides} options={options} />
       <div className="bg-neutral-700/80 p-4">
         <div className="relative z-20 -mt-[20%] lg:-mt-60 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -153,6 +153,6 @@ export default function Home() {
           title="Min. 50% off | Unique kitchen finds | Amazon Brands & more"
         />
       </div>
-    </>
+    </main>
   );
 }

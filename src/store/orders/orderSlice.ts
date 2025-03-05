@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import getOrders from "./actions/getOrders";
 import createOrder from "./actions/createOrder";
 
 import { TOrder } from "../../types/orders.types";
@@ -42,12 +43,24 @@ const ordersSlice = createSlice({
         state.isLoading = false;
         if (typeof action.payload === "string") state.error = action.payload;
       });
+
+    builder
+      .addCase(getOrders.pending, (state) => {
+        state.error = null;
+        state.isLoading = true;
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.orders = action.payload;
+      })
+      .addCase(getOrders.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") state.error = action.payload;
+      });
   },
 });
 
-export {
-  createOrder,
-  // getOrders
-};
+export { createOrder, getOrders };
 export const { resetOrderState } = ordersSlice.actions;
 export default ordersSlice.reducer;

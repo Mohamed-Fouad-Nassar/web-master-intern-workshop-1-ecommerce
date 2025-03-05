@@ -29,7 +29,7 @@ const SearchbarH = () => {
         />
         <Button
           type="submit"
-          className="absolute right-0 top-0 text-black flex items-center gap-1.5"
+          className="absolute right-0 top-0 bottom-0 text-black flex items-center gap-1.5"
         >
           <Search className="size-5" />
           <span className="hidden md:block">Search</span>

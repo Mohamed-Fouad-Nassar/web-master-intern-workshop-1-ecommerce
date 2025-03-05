@@ -31,7 +31,7 @@ export default function Header() {
           <div className="flex items-center gap-1.5">
             <MapPin size={20} />
             <p className="text-sm">
-              Deliver to <br /> <span className="font-semibold">Egypt</span>
+              Deliver to <span className="font-semibold">Egypt</span>
             </p>
           </div>
 
